@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { error } from '@angular/compiler/src/util';
 
 @Component({
@@ -31,7 +32,7 @@ export class InputParamsType3Component implements OnInit {
     const lengthRatio = (form.value.length/100) / (form.value.outletHeight/100);
 
     this.httpClient.get(
-      'https://us-central1-blk-vol1-2f260.cloudfunctions.net/getContractionData'
+      environment.api.contraction
     ).subscribe(response => {
         this.data = response;
 

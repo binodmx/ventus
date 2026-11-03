@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { error } from '@angular/compiler/src/util';
 
 @Component({
@@ -31,7 +32,7 @@ export class InputParamsType4Component implements OnInit {
     const coneAngle = form.value.coneAngle;
 
     this.httpClient.get(
-      'https://us-central1-blk-vol1-2f260.cloudfunctions.net/getDiffuserData'
+      environment.api.diffuser
     ).subscribe(response => {
         this.data = response;
 

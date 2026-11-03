@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { fromEventPattern } from 'rxjs';
 
 @Component({
@@ -45,14 +46,15 @@ export class InputParamsType1Component implements OnInit {
       }
       // set speed
       this.httpClient.get(
-        'https://us-central1-blk-vol1-2f260.cloudfunctions.net/setParams?speed=' + form.value.speed + '&arc=' + arc + '&lrc=' + lrc + '&ard=' + ard + '&ead=' + ead
+        environment.api.setParams,
+        { params: { speed: form.value.speed, arc, lrc, ard, ead } }
       ).subscribe(response => { 
         console.log(response);        
       });
       setTimeout(() => {
         // get data
         this.httpClient.get(
-          'https://us-central1-blk-vol1-2f260.cloudfunctions.net/getData'
+          environment.api.data
         ).subscribe(response => {
           this.data = response;
           for (let i = 5; i < this.data.length; i++) {

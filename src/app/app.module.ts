@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { InputsComponent } from './inputs/inputs.component';
 import { OutputsComponent } from './outputs/outputs.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiKeyInterceptor } from './api-key.interceptor';
 import { HomeComponent } from './home/home.component';
 import { SelectBuildMethodComponent } from './select-build-method/select-build-method.component';
 import { InputParamsType1Component } from './input-params-type1/input-params-type1.component';
@@ -52,7 +53,9 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

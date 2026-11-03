@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { error } from '@angular/compiler/src/util';
 
 @Component({
@@ -25,7 +26,7 @@ export class InputsComponent implements OnInit {
     const lengthRatio = form.value.outletHeight / form.value.length;
 
     this.httpClient.get(
-      'https://us-central1-blk-vol1-2f260.cloudfunctions.net/getData'
+      environment.api.data
     ).subscribe(response => {
         this.data = response;
 

@@ -42,6 +42,10 @@ testem.log
 # Environment / secrets
 .env
 .env.*
+!.env.example
+
+# Generated from .env by scripts/set-env.js
+/src/environments/env.ts
 
 # System files
 .DS_Store
