@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <a class="navbar-brand" routerLink="">
+    <img src="../assets/ventus_logo.png" alt="" height="50">
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" (click)="currentPage = 'home'" style="cursor: pointer;">Home</a>
+      </li>
+      <!-- <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/demo">Demo</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/docs">Docs</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="currentPage = 'about'" style="cursor: pointer;">About</a>
+      </li>
+    </ul>
+  </div>
+  <!-- <a class="d-none d-lg-block" href="https://uom.lk/mech" target="_blank" style="padding-right: 10px">
+    <img src="../assets/mech_logo.png" alt="" height="50">
+  </a>
+  <a class="d-none d-lg-block" href="https://uom.lk" target="_blank" style="padding-right: 10px">
+    <img src="../assets/uom_logo.png" alt="" width="60">
+  </a> -->
+</nav>
+<br>
+<div>
+  <div class="container" >
+    <div class="card" *ngIf="currentPage == 'home'">
+      <div class="body">
+        <p style="padding: 10px; font-size: 18px; font-family:'Arial (Body)'; color: #00008b;">
+          ● Ventus Wind Tunnel Designs is a framework for the design specifications for Subsonic, Low-Speed, Open Circuit wind tunnels.<br>
+          ● Follow through the guidelines and you can build your own wind tunnel.<br>
+          ● Your wind tunnel design can be built upon the test section dimensions or the specifications of the fan you use. <br>
+          ● Please note that this framework assumes a square shaped cross section in the test section.
+        </p>
+      </div>
+    </div>
+    <br>
+    <app-home *ngIf="currentPage == 'home'" (changeCurrentPageEvent)="onChangeCurrentPage($event)"></app-home>
+    <app-about *ngIf="currentPage == 'about'"></app-about>
+    <app-select-build-method *ngIf="currentPage == 'select-build-method'" (changeCurrentPageEvent)="onChangeCurrentPage($event)"></app-select-build-method>
+    <app-input-params-type1 *ngIf="currentPage == 'input-params-type1'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" (dataEvent)="onChangeData1($event)"></app-input-params-type1>
+    <app-input-params-type2 *ngIf="currentPage == 'input-params-type2'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" (dataEvent)="onChangeData2($event)"></app-input-params-type2>
+    <app-input-params-type3 *ngIf="currentPage == 'input-params-type3'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" (dataEvent)="onChangeData3($event)"></app-input-params-type3>
+    <app-input-params-type4 *ngIf="currentPage == 'input-params-type4'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" (dataEvent)="onChangeData4($event)"></app-input-params-type4>
+    <app-output-results-type1 *ngIf="currentPage == 'output-results-type1'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" [data1]="data1"></app-output-results-type1>
+    <app-output-results-type2 *ngIf="currentPage == 'output-results-type2'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" [data2]="data2"></app-output-results-type2>
+    <app-output-results-type3 *ngIf="currentPage == 'output-results-type3'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" [data3]="data3"></app-output-results-type3>
+    <app-output-results-type4 *ngIf="currentPage == 'output-results-type4'" (changeCurrentPageEvent)="onChangeCurrentPage($event)" [data4]="data4"></app-output-results-type4>
+    <app-hs-data *ngIf="currentPage == 'hs-data'" (changeCurrentPageEvent)="onChangeCurrentPage($event)"></app-hs-data>
+  </div>
+</div>
+<br><br><br>
+<div class="footer bg-light"><p>All rights reserved © 2021</p></div>
+

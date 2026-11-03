@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        Diffuser Data
+    </div>
+    <div class="row card-body">
+        <div class="col">
+          <table class="table table-hover" >
+            <tr><th>Steadiness</th><td>{{ (data4 ? data4[0] : 0) | number: '.5' }}</td></tr>
+            <tr><th>Pressure Recovery (Pa)</th><td>{{ (data4 ? data4[1] : 0) | number: '.5'}}</td></tr>
+            <tr><th>Surface Area (m<sup>2</sup>)</th><td>{{ (data4 ? data4[2] : 0) | number: '.5'}}</td></tr>
+          </table>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                <p>Shape</p>
+                <app-draw-diffuser [HCO]="data4[3] | number: '.2'" [HOD]="data4[4] | number: '.2'" [LDF]="data4[5] | number: '.2'"></app-draw-diffuser>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm">
+        <button type="button" class="btn btn-secondary btn-block" (click)="onClickBack()">Home</button>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group row">
+        <label for="inletHeight" class="col-sm-2 col-form-label">Inlet Height</label>
+        <div class="col-sm-2"><input type="number" step="0.01" id="inletHeight" class="form-control" name="inletHeight" ngModel required></div>
+      </div>
+      <div class="form-group row">
+        <label for="outletHeight" class="col-sm-2 col-form-label">Outlet Height</label>
+        <div class="col-sm-2"><input type="number" step="0.01" id="outletHeight" class="form-control" name="outletHeight" ngModel required></div>
+      </div>
+      <div class="form-group row">
+        <label for="length" class="col-sm-2 col-form-label">Length</label>
+        <div class="col-sm-2"><input type="number" step="0.01" id="length" class="form-control" name="length" ngModel required></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary btn-block">Find</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

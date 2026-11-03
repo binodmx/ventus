@@ -1,0 +1,39 @@
+<div>
+    <div class="card">
+        <div class="card-header">
+            Step 2 of 2 - Input Test Section Dimensions and Speed
+        </div>
+        <div class="card-body">
+            <form #f="ngForm">
+                <div class="form-group row">
+                    <label for="height" class="col-md-4 col-form-label">Test Section Height or Width (cm)</label>
+                    <div class="col-md-4">
+                        <input type="number" step="1" min="15" max="150" id="height" class="form-control" name="height" ngModel required>
+                        <small id="height" class="form-text text-muted">Please enter a height between 15cm and 150cm</small>
+                    </div>
+                    
+                </div>
+                <div class="form-group row">
+                    <label for="speed" class="col-md-4 col-form-label">Speed (m/s)</label>
+                    <div class="col-md-4">
+                        <input type="number" step="1" min="0" max="90" id="speed" class="form-control" name="speed" ngModel required>
+                        <small id="speed" class="form-text text-muted">Please enter a speed between 0m/s and 90m/s</small>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-secondary btn-block" (click)="onClickBack()">Back</button>
+        </div>
+        <br><br>
+        <div class="col-sm">
+            <button type="button" class="btn btn-success btn-block" (click)="onClickNext(f)" [disabled]="!f.valid">
+                Build Wind Tunnel
+                <span *ngIf="clicked"><div class="lds-dual-ring"></div></span>
+            </button>
+        </div>
+    </div>
+</div>

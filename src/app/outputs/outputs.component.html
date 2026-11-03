@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+        <table class="table table-hover">
+          <tr><th>Steadiness</th><td>{{ (data ? data[0] : 0) | number: '.5' }}</td></tr>
+          <tr><th>Boundary Layer Thickness</th><td>{{ (data ? data[1] : 0) | number: '.5'}}</td></tr>
+          <tr><th>Shear Z</th><td>{{ (data ? data[2] : 0) | number: '.5'}}</td></tr>
+          <tr><th>Surface Area</th><td>{{ (data ? data[3] : 0) | number: '.5'}}</td></tr>
+          <tr><th>Inlet Velocity</th><td>{{ (data ? data[4] : 0) | number: '.5'}}</td></tr>
+        </table>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body" style="height: 100px">
+            <p>Shape</p>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-body" style="height: 100px">
+            <p>Most Optimum Design</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

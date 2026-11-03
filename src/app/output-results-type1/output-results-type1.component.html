@@ -1,0 +1,169 @@
+<div>
+    <div class="card" #summary>
+        <div class="card-header">
+            Optimum Wind Tunnel Data
+        </div>
+        <div class="card-body">
+            <div class="accordion" id="accordionExample">
+                <!-- Overall Wind Tunnel Shape -->
+                <app-draw-scene [HCO]="data1[3]" [HCI]="data1[4]" [LCN]="data1[5]" [LTS]="data1[2]" [HOD]="data1[7]" [LDF]="data1[8]"></app-draw-scene>
+
+                <!-- Contraction -->
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Contraction
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" [ngClass]="{show: expandAll}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body row">
+                            <div class="col-sm">
+                                <table class="table table-hover">
+                                    <tr><td>Area Ratio</td><td>{{ (data1 ? data1[data1.length - 2] : 0) | number: '.4' }}</td></tr>
+                                    <tr><td>Length Ratio</td><td>{{ (data1 ? data1[data1.length - 1] : 0) | number: '.4' }}</td></tr>
+                                    <tr><td>Contraction Length (m)</td><td>{{ (data1 ? data1[5] : 0) | number: '.3' }}</td></tr>
+                                    <tr><td>Contraction Inlet Height (m)</td><td>{{ (data1 ? data1[4] : 0) | number: '.3' }}</td></tr>
+                                    <tr><td>Contraction Outlet Height (m)</td><td>{{ (data1 ? data1[3] : 0) | number: '.3' }}</td></tr>
+                                    <tr><td>Contraction Silhoutte Polynomial</td><td>y = ({{6*(1 - data1[0]/2) | number: '.3'}})t<sup>5</sup> + ({{-15*(1 - data1[0]/2) | number: '.3'}})t<sup>4</sup> + ({{10*(1 - data1[0]/2) | number: '.3'}})t<sup>3</sup> + ({{1 - data1[0]/2 | number: '.3'}}) where t = x / Contraction Length</td></tr>
+                                </table>
+                            </div>
+                            <div class="col-sm">
+                                <app-draw-contraction [HCO]="data1[3]" [HCI]="data1[4]" [LCN]="data1[5]"></app-draw-contraction>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Section -->
+                <div class="card">
+                    <div class="card-header" id="headingZero">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+                                Test Section
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseZero" [ngClass]="{show: expandAll}" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample">
+                        <div class="card-body row">
+                            <div class="col-sm">
+                                <table class="table table-hover">
+                                    <tr><td>Test Section Height (m)</td><td>{{ (data1 ? data1[0] : 0) | number: '.3' }}</td></tr>
+                                    <tr><td>Test Section Length (m)</td><td>{{ (data1 ? data1[2] : 0) | number: '.3' }}</td></tr>
+                                </table>
+                            </div>
+                            <div class="col-sm">
+                                <app-draw-test-section [HCO]="data1[3]" [LTS]="data1[2]"></app-draw-test-section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diffuser -->
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Diffuser
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" [ngClass]="{show: expandAll}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body row">
+                        <div class="col-sm">
+                            <table class="table table-hover">
+                                <tr><td>Area Ratio</td><td>{{ (data1 ? data1[data1.length - 4] : 0) | number: '.4' }}</td></tr>
+                                <tr><td>Expansion Cone Angle (rad)</td><td>{{ (data1 ? data1[data1.length - 3] : 0) | number: '.4' }}</td></tr>
+                                <tr><td>Diffuser Length (m)</td><td>{{ (data1 ? data1[8] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Diffuser Inlet Height (m)</td><td>{{ (data1 ? data1[6] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Diffuser Outlet Height (m)</td><td>{{ (data1 ? data1[7] : 0) | number: '.3' }}</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-sm">
+                            <app-draw-diffuser [HCO]="data1[3]" [HOD]="data1[7]" [LDF]="data1[8]"></app-draw-diffuser>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                      <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Honeycombs & Screens
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseThree" [ngClass]="{show: expandAll}" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table table-hover col-sm-6">
+                                <tr><th>Honeycombs</th></tr>
+                                <tr><td>Settling Chamber Height (m)</td><td>{{ (data1 ? data1[15] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Settling Chamber Width (m)</td><td>{{ (data1 ? data1[16] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Cells per Diameter</td><td>{{ (data1 ? data1[17] : 0) | number: '.3' }}</td></tr>
+                                <tr><td><b>[LEH]</b> External Honeycomb Length (mm)</td><td>{{ (data1 ? data1[18] : 0) | number: '.3' }}</td></tr>
+                                <tr><td><b>[LIH]</b> Internal Honeycomb Length (mm)</td><td>{{ (data1 ? data1[19] : 0) | number: '.3' }}</td></tr>
+                                <tr><td><b>[DIH]</b> Honeycomb Diameter (mm)</td><td>{{ (data1 ? data1[20] : 0) | number: '.3' }}</td></tr>
+                                <tr><td><b>[THH]</b> Honeycomb Thickness (mm)</td><td>{{ (data1 ? data1[21] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Honeycomb Porosity</td><td>{{ (data1 ? data1[22] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Honeycomb Hydraulic Diameter (m)</td><td>{{ (data1 ? data1[23] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Honeycomb Length (m)</td><td>{{ (data1 ? data1[24] : 0) | number: '.3' }}</td></tr>
+                            </table>
+                            <div class="col-sm-6">
+                                <img src="../../assets/honeycomb.jpg" alt="Italian Trulli" height="300px">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <table class="table table-hover col-sm-6">
+                                <tr><th>Screens</th></tr>
+                                <tr><td>Wire Width Ratio</td><td>0.0023</td></tr>
+                                <tr><td>Wire Width (m)</td><td>{{ (data1 ? data1[25] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[28] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[31] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[34] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>No of Divisions</td><td>{{ (data1 ? data1[26] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[29] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[32] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[35] : 0) | number: '.3' }}</td></tr>
+                                <tr><td>Screen Porosity</td><td>{{ (data1 ? data1[27] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[30] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[33] : 0) | number: '.3' }}</td><td>{{ (data1 ? data1[36] : 0) | number: '.3' }}</td></tr>
+                            </table>
+                            <div class="col-sm-6">
+                                <img src="../../assets/screen.jpg" alt="Italian Trulli" height="260px">
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                      <h2 class="mb-0">
+                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          Fan
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseFour" [ngClass]="{show: expandAll}" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body row">
+                            <div class="col-sm">
+                                <table class="table table-hover">
+                                    <tr><td>Pressure Drop (Pa)</td><td>{{ (data1 ? data1[14] : 0) | number: '.3' }}</td></tr>
+                                    <tr><td>Flow Rate (m<sup>3</sup>/s)</td><td>{{ (data1 ? data1[9] : 0) | number: '.3' }}</td></tr>
+                                </table>
+                            </div>
+                            <div class="col-sm">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-secondary btn-block" (click)="onClickBack()">Home</button>
+        </div>
+        <br><br>
+        <div class="col-sm">
+            <button type="button" class="btn btn-success btn-block" (click)="onClickDownload(summary)">Download PDF</button>
+        </div>
+    </div>
+</div>

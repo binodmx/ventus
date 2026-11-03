@@ -1,0 +1,29 @@
+<div>
+    <div class="card">
+        <div class="card-header">
+            Step 1 of 2 - Select Build Method
+        </div>
+        <div class="card-body">
+            <form #f="ngForm">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="input-params-type" id="input-params-type1" value="input-params-type1" [ngModel]="inputParamsType">
+                    <label class="form-check-label" for="input-params-type1">By setting test section dimensions and speed</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="input-params-type" id="input-params-type2" value="input-params-type2" [ngModel]="inputParamsType">
+                    <label class="form-check-label" for="input-params-type2">By setting fan specs and speed</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-secondary btn-block" (click)="onClickBack()">Back</button>
+        </div>
+        <br><br>
+        <div class="col-sm">
+            <button type="button" class="btn btn-success btn-block" (click)="onClickNext(f)">Next</button>
+        </div>
+    </div>
+</div>

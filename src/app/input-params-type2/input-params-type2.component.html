@@ -1,0 +1,38 @@
+<div>
+    <div class="card">
+        <div class="card-header">
+            Step 2 of 2 - Input Fan Specs and Speed
+        </div>
+        <div class="card-body">
+            <form #f="ngForm">
+                <div class="form-group row">
+                    <label for="fanFlowRate" class="col-md-4 col-form-label">Fan Flow Rate (m<sup>3</sup>/s)</label>
+                    <div class="col-md-4">
+                        <input type="number" step="1" min="0" max="202" id="fanFlowRate" class="form-control" name="fanFlowRate" ngModel required>
+                        <small id="fanFlowRate" class="form-text text-muted">Please enter a fan flow rate between 0m<sup>3</sup>/s and 202m<sup>3</sup>/s</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="speed" class="col-md-4 col-form-label">Speed (m/s)</label>
+                    <div class="col-md-4">
+                        <input type="number" step="1" min="0" max="90" id="speed" class="form-control" name="speed" ngModel required>
+                        <small id="speed" class="form-text text-muted">Please enter a speed between 0m/s and 90m/s</small>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-secondary btn-block" (click)="onClickBack()">Back</button>
+        </div>
+        <br><br>
+        <div class="col-sm">
+            <button type="button" class="btn btn-success btn-block" (click)="onClickNext(f)" [disabled]="!f.valid">
+                Build Wind Tunnel
+                <span *ngIf="clicked"><div class="lds-dual-ring"></div></span>
+            </button>
+        </div>
+    </div>
+</div>
